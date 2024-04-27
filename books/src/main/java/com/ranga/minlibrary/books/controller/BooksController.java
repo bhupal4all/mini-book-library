@@ -5,10 +5,13 @@ import com.ranga.minlibrary.books.dto.ResponseDto;
 import com.ranga.minlibrary.books.entity.BooksEntity;
 import com.ranga.minlibrary.books.mapper.BooksMapper;
 import com.ranga.minlibrary.books.service.BooksService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/v1/books", produces = MediaType.APPLICATION_JSON_VALUE)
+@Validated
 public class BooksController {
 
     @Autowired
@@ -49,7 +53,7 @@ public class BooksController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addBook(@RequestBody BooksDto booksDto) {
+    public ResponseEntity<?> addBook(@Valid @RequestBody BooksDto booksDto) {
         final BooksDto dto = BooksMapper.toDto(booksService.addBook(BooksMapper.toEntity(booksDto)));
         ResponseDto responseDto = ResponseDto.builder()
                 .data(dto)
@@ -61,7 +65,7 @@ public class BooksController {
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateBook(@PathVariable(name = "id") Integer id, @RequestBody BooksDto booksDto) {
+    public ResponseEntity<?> updateBook(@Min(value = 1) @PathVariable(name = "id") Integer id, @Valid @RequestBody BooksDto booksDto) {
         final BooksDto dto = BooksMapper.toDto(booksService.updateBook(id, BooksMapper.toEntity(booksDto)));
         ResponseDto responseDto = ResponseDto.builder()
                 .data(dto)
@@ -73,7 +77,7 @@ public class BooksController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<?> deleteBook(@Min(value = 1) @PathVariable(name = "id") Integer id) {
         booksService.deleteBook(id);
         ResponseDto responseDto = ResponseDto.builder()
                 .message("Book deleted successfully")
