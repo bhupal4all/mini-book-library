@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ranga
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  autoIncrement: true
+                  incrementBy: 1
+                  startWith: 10
+              - column:
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: published_year
+                  type: int
+                  constraints:
+                    nullable: false
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: title
+                  value: "Spring Boot in Action"
+              - column:
+                  name: author
+                  value: "Craig Walls"
+              - column:
+                  name: published_year
+                  value: 2016
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: title
+                  value: "Spring Microservices in Action"
+              - column:
+                  name: author
+                  value: "John Carnell"
+              - column:
+                  name: published_year
+                  value: 2017
