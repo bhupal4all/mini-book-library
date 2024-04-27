@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponseDto> handleException(Exception ex, WebRequest request) {
+    public ResponseEntity<ErrorResponseDto> handleGlobalException(Exception ex, WebRequest request) {
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 request.getDescription(false),
                 ex.getMessage(),

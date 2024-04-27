@@ -30,6 +30,20 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(20)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(20)
+              - column:
+                  name: updated_at
+                  type: timestamp
         - insert:
             tableName: books
             columns:
@@ -45,6 +59,12 @@ databaseChangeLog:
               - column:
                   name: published_year
                   value: 2016
+              - column:
+                  name: created_by
+                  value: "Ranga"
+              - column:
+                  name: created_at
+                  value: now()
         - insert:
             tableName: books
             columns:
@@ -60,3 +80,9 @@ databaseChangeLog:
               - column:
                   name: published_year
                   value: 2017
+              - column:
+                  name: created_by
+                  value: "Ranga"
+              - column:
+                  name: created_at
+                  value: now()

@@ -11,8 +11,8 @@ import java.io.Serializable;
 @Table(name = "books")
 @Setter
 @Getter
-@ToString
-public class BooksEntity {
+@ToString(callSuper = true)
+public class BooksEntity extends BaseEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @Builder
-public class BooksDto {
+public class BooksDto extends BaseDto {
     Integer id;
 
     String title;

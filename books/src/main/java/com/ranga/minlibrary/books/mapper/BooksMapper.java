@@ -1,8 +1,15 @@
 package com.ranga.minlibrary.books.mapper;
 
+import com.ranga.minlibrary.books.dto.BooksDto;
+
 public class BooksMapper {
     public static com.ranga.minlibrary.books.dto.BooksDto toDto(com.ranga.minlibrary.books.entity.BooksEntity entity) {
-        return new com.ranga.minlibrary.books.dto.BooksDto(entity.getId(), entity.getTitle(), entity.getAuthor(), entity.getPublishedYear());
+        final BooksDto booksDto = new BooksDto(entity.getId(), entity.getTitle(), entity.getAuthor(), entity.getPublishedYear());
+        booksDto.setCreatedBy(entity.getCreatedBy());
+        booksDto.setCreatedAt(entity.getCreatedAt());
+        booksDto.setUpdatedBy(entity.getUpdatedBy());
+        booksDto.setUpdatedAt(entity.getUpdatedAt());
+        return booksDto;
     }
 
     public static com.ranga.minlibrary.books.entity.BooksEntity toEntity(com.ranga.minlibrary.books.dto.BooksDto dto) {
