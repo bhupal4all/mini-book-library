@@ -10,11 +10,11 @@
 	</parent>
 
 	<groupId>com.ranga.min-library</groupId>
-	<artifactId>books</artifactId>
+	<artifactId>inventory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>books</name>
-	<description>Books Service</description>
+	<name>inventory</name>
+	<description>Inventory Service</description>
 
 	<properties>
 		<java.version>17</java.version>
