@@ -1,7 +1,11 @@
 package com.ranga.minlibrary.inventory.handler;
 
 import com.ranga.minlibrary.inventory.dto.ErrorResponseDto;
+import com.ranga.minlibrary.inventory.exceptions.BookIsNotIssuedException;
+import com.ranga.minlibrary.inventory.exceptions.BookReturnedException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -18,6 +22,7 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 @Slf4j
+@Order(Ordered.LOWEST_PRECEDENCE)
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
@@ -29,6 +34,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 java.time.LocalDateTime.now()
         );
+        log.error("Global exception: {}", errorResponseDto);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponseDto);
     }
 
