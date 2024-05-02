@@ -1,10 +1,10 @@
-package com.ranga.minlibrary.inventory;
+package com.ranga.minilibrary.inventory;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InventoryApplicationTests {
+class BooksApplicationTests {
 
 	@Test
 	void contextLoads() {

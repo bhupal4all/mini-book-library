@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory;
+package com.ranga.minilibrary.inventory;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
