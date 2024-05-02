@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory.exceptions;
+package com.ranga.minilibrary.inventory.exceptions;
 
 public class BookReturnedException extends RuntimeException {
     public BookReturnedException() {

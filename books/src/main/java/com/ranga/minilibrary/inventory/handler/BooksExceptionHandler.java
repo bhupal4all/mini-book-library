@@ -1,7 +1,7 @@
-package com.ranga.minlibrary.inventory.handler;
+package com.ranga.minilibrary.inventory.handler;
 
-import com.ranga.minlibrary.inventory.dto.ErrorResponseDto;
-import com.ranga.minlibrary.inventory.exceptions.BookNotFoundException;
+import com.ranga.minilibrary.inventory.dto.ErrorResponseDto;
+import com.ranga.minilibrary.inventory.exceptions.BookNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory.dto;
+package com.ranga.minilibrary.inventory.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

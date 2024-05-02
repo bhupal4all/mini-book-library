@@ -1,5 +1,6 @@
-package com.ranga.minlibrary.inventory.entity;
+package com.ranga.minilibrary.inventory.entity;
 
+import com.ranga.minilibrary.inventory.dto.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

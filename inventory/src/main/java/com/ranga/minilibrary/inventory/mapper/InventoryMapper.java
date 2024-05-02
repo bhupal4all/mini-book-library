@@ -1,7 +1,7 @@
-package com.ranga.minlibrary.inventory.mapper;
+package com.ranga.minilibrary.inventory.mapper;
 
-import com.ranga.minlibrary.inventory.dto.InventoryDto;
-import com.ranga.minlibrary.inventory.entity.InventoryEntity;
+import com.ranga.minilibrary.inventory.dto.InventoryDto;
+import com.ranga.minilibrary.inventory.entity.InventoryEntity;
 
 public class InventoryMapper {
     public static InventoryDto toDto(InventoryEntity entity) {

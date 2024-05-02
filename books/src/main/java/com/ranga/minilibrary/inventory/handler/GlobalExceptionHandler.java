@@ -1,6 +1,6 @@
-package com.ranga.minlibrary.inventory.handler;
+package com.ranga.minilibrary.inventory.handler;
 
-import com.ranga.minlibrary.inventory.dto.ErrorResponseDto;
+import com.ranga.minilibrary.inventory.dto.ErrorResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

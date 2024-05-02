@@ -1,15 +1,14 @@
-package com.ranga.minlibrary.inventory.service;
+package com.ranga.minilibrary.inventory.service;
 
-import com.ranga.minlibrary.inventory.entity.IssuedBooksEntity;
-import com.ranga.minlibrary.inventory.exceptions.BookIsNotIssuedException;
-import com.ranga.minlibrary.inventory.exceptions.BookReturnedException;
-import com.ranga.minlibrary.inventory.repository.IssuedBooksRepository;
+import com.ranga.minilibrary.inventory.entity.IssuedBooksEntity;
+import com.ranga.minilibrary.inventory.exceptions.BookIsNotIssuedException;
+import com.ranga.minilibrary.inventory.exceptions.BookReturnedException;
+import com.ranga.minilibrary.inventory.repository.IssuedBooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BooksIssuedService {

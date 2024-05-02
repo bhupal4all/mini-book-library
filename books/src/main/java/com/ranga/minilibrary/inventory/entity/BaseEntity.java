@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory.entity;
+package com.ranga.minilibrary.inventory.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

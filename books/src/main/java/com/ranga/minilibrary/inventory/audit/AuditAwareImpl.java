@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory.audit;
+package com.ranga.minilibrary.inventory.audit;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;

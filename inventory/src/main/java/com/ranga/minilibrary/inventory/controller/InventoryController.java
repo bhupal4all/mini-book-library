@@ -1,11 +1,11 @@
-package com.ranga.minlibrary.inventory.controller;
+package com.ranga.minilibrary.inventory.controller;
 
-import com.ranga.minlibrary.inventory.dto.ErrorResponseDto;
-import com.ranga.minlibrary.inventory.dto.InventoryDto;
-import com.ranga.minlibrary.inventory.dto.ResponseDto;
-import com.ranga.minlibrary.inventory.entity.InventoryEntity;
-import com.ranga.minlibrary.inventory.mapper.InventoryMapper;
-import com.ranga.minlibrary.inventory.service.InventoryService;
+import com.ranga.minilibrary.inventory.dto.ErrorResponseDto;
+import com.ranga.minilibrary.inventory.dto.InventoryDto;
+import com.ranga.minilibrary.inventory.dto.ResponseDto;
+import com.ranga.minilibrary.inventory.entity.InventoryEntity;
+import com.ranga.minilibrary.inventory.mapper.InventoryMapper;
+import com.ranga.minilibrary.inventory.service.InventoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,9 +1,8 @@
-package com.ranga.minlibrary.inventory.repository;
+package com.ranga.minilibrary.inventory.repository;
 
-import com.ranga.minlibrary.inventory.entity.IssuedBooksEntity;
+import com.ranga.minilibrary.inventory.entity.IssuedBooksEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public interface IssuedBooksRepository extends JpaRepository<IssuedBooksEntity, Integer> {

@@ -1,6 +1,6 @@
-package com.ranga.minlibrary.inventory.repository;
+package com.ranga.minilibrary.inventory.repository;
 
-import com.ranga.minlibrary.inventory.entity.InventoryEntity;
+import com.ranga.minilibrary.inventory.entity.InventoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InventoryRepository extends JpaRepository<InventoryEntity, Integer> {

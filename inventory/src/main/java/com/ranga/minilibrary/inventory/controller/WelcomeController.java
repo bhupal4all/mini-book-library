@@ -1,4 +1,4 @@
-package com.ranga.minlibrary.inventory.controller;
+package com.ranga.minilibrary.inventory.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

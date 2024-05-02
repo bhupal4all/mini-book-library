@@ -1,8 +1,8 @@
-package com.ranga.minlibrary.inventory.service;
+package com.ranga.minilibrary.inventory.service;
 
-import com.ranga.minlibrary.inventory.entity.BooksEntity;
-import com.ranga.minlibrary.inventory.exceptions.BookNotFoundException;
-import com.ranga.minlibrary.inventory.repository.BooksRepository;
+import com.ranga.minilibrary.inventory.entity.BooksEntity;
+import com.ranga.minilibrary.inventory.exceptions.BookNotFoundException;
+import com.ranga.minilibrary.inventory.repository.BooksRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

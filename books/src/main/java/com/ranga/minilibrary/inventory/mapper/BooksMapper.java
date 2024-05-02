@@ -1,9 +1,10 @@
-package com.ranga.minlibrary.inventory.mapper;
+package com.ranga.minilibrary.inventory.mapper;
 
-import com.ranga.minlibrary.inventory.dto.BooksDto;
+import com.ranga.minilibrary.inventory.dto.BooksDto;
+import com.ranga.minilibrary.inventory.entity.BooksEntity;
 
 public class BooksMapper {
-    public static com.ranga.minlibrary.inventory.dto.BooksDto toDto(com.ranga.minlibrary.inventory.entity.BooksEntity entity) {
+    public static BooksDto toDto(BooksEntity entity) {
         final BooksDto booksDto = new BooksDto(entity.getId(), entity.getTitle(), entity.getAuthor(), entity.getPublishedYear());
         booksDto.setCreatedBy(entity.getCreatedBy());
         booksDto.setCreatedAt(entity.getCreatedAt());
@@ -12,8 +13,8 @@ public class BooksMapper {
         return booksDto;
     }
 
-    public static com.ranga.minlibrary.inventory.entity.BooksEntity toEntity(com.ranga.minlibrary.inventory.dto.BooksDto dto) {
-        com.ranga.minlibrary.inventory.entity.BooksEntity entity = new com.ranga.minlibrary.inventory.entity.BooksEntity();
+    public static BooksEntity toEntity(BooksDto dto) {
+        BooksEntity entity = new BooksEntity();
         entity.setId(dto.getId());
         entity.setTitle(dto.getTitle());
         entity.setAuthor(dto.getAuthor());

@@ -1,7 +1,7 @@
-package com.ranga.minlibrary.inventory.service;
+package com.ranga.minilibrary.inventory.service;
 
-import com.ranga.minlibrary.inventory.entity.InventoryEntity;
-import com.ranga.minlibrary.inventory.repository.InventoryRepository;
+import com.ranga.minilibrary.inventory.entity.InventoryEntity;
+import com.ranga.minilibrary.inventory.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
