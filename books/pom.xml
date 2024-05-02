@@ -12,6 +12,7 @@
 	<groupId>com.ranga.min-library</groupId>
 	<artifactId>books</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>books</name>
 	<description>Books Service</description>

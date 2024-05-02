@@ -19,5 +19,5 @@ spring:
     change-log: db/changelog/changelog.yml
 
 server:
-  port: 8090
+  port: 8080
 

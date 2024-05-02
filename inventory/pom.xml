@@ -12,6 +12,7 @@
 	<groupId>com.ranga.min-library</groupId>
 	<artifactId>inventory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>inventory</name>
 	<description>Inventory Service</description>
