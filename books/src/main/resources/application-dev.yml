@@ -1,9 +1,0 @@
-spring:
-  config:
-    activate:
-      on-profile: 'dev'
-books:
-  contact:
-    contact-details:
-      email: "dev-admin@mini-library.com"
-      name: "Dev Admin"
