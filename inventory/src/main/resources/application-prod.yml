@@ -1,0 +1,9 @@
+spring:
+  config:
+    activate:
+      on-profile: 'prod'
+books:
+  contact:
+    contact-details:
+      email: "prod-admin@mini-library.com"
+      name: "Prod Admin"

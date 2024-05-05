@@ -18,6 +18,12 @@ spring:
       path: /h2-console
   liquibase:
     change-log: db/changelog/changelog.yml
+  config:
+    import:
+      - application-dev.yml
+      - application-prod.yml
+  profiles:
+    active: 'dev'
 
 server:
   port: 8080
@@ -26,8 +32,8 @@ books:
   contact:
     message: "Hello from books-service"
     contact-details:
-      email: "admin@mini-library.com"
-      name: "Mini Library"
+      email: "default-admin@mini-library.com"
+      name: "Default Admin"
     on-call-support:
       - "123-456-7890"
       - "098-765-4321"
