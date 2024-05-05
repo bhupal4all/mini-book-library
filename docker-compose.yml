@@ -1,0 +1,25 @@
+services:
+  books:
+    image: books
+    build:
+      context: books
+      dockerfile: Dockerfile
+    container_name: books_ms
+    ports:
+        - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+  inventory:
+    image: inventory
+    build:
+      context: inventory
+      dockerfile: Dockerfile
+    container_name: inventory_ms
+    ports:
+        - "8090:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700M
