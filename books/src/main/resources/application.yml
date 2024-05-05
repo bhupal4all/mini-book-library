@@ -1,6 +1,7 @@
 spring:
   application:
     name: books-service
+    version: 1.0.0
   datasource:
     url: jdbc:h2:mem:books
     driver-class-name: org.h2.Driver
@@ -21,3 +22,13 @@ spring:
 server:
   port: 8080
 
+books:
+  contact:
+    message: "Hello from books-service"
+    contact-details:
+      email: "admin@mini-library.com"
+      name: "Mini Library"
+    on-call-support:
+      - "123-456-7890"
+      - "098-765-4321"
+      - "135-792-4680"
