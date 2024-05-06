@@ -2,8 +2,8 @@ services:
   books:
     image: books
     build:
-      context: books
-      dockerfile: Dockerfile
+      context: ../books
+      dockerfile: ../books/Dockerfile
     container_name: books_ms
     ports:
         - "8080:8080"
@@ -14,8 +14,8 @@ services:
   inventory:
     image: inventory
     build:
-      context: inventory
-      dockerfile: Dockerfile
+      context: ../inventory
+      dockerfile: ../inventory/Dockerfile
     container_name: inventory_ms
     ports:
         - "8090:8080"
