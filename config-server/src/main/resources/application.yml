@@ -14,3 +14,9 @@ server:
   port: 8888
 encrypt:
   key: abcdefghijklmnopqrstuvwxyz123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
