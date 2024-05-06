@@ -21,7 +21,7 @@ books:
     message: "Hello from books-service"
     contact-details:
       email: "{cipher}08e75baa5adb50d1f3e4a9e37a05be083eecc659bfb55dcdd9a730cc12ecbba3f513c9cc78ab13073dd86bd8c33ec342"
-      name: "Default Admin"
+      name: "Default Admin Ranga"
     on-call-support:
       - "123-456-7890"
       - "098-765-4321"
