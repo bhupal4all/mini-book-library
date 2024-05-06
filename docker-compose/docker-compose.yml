@@ -1,4 +1,18 @@
 services:
+  config-server:
+    image: config-server
+    build:
+      context: ../config-server
+      dockerfile: ../config-server/Dockerfile
+    container_name: config_server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../app-configs:/app-configs
+    deploy:
+      resources:
+        limits:
+          memory: 700M
   books:
     image: books
     build:
@@ -6,7 +20,7 @@ services:
       dockerfile: ../books/Dockerfile
     container_name: books_ms
     ports:
-        - "8080:8080"
+      - "8080:8080"
     deploy:
       resources:
         limits:
@@ -18,7 +32,7 @@ services:
       dockerfile: ../inventory/Dockerfile
     container_name: inventory_ms
     ports:
-        - "8090:8080"
+      - "8090:8080"
     deploy:
       resources:
         limits:
