@@ -20,7 +20,7 @@ books:
   contact:
     message: "Hello from books-service"
     contact-details:
-      email: "default-admin@mini-library.com"
+      email: "{cipher}08e75baa5adb50d1f3e4a9e37a05be083eecc659bfb55dcdd9a730cc12ecbba3f513c9cc78ab13073dd86bd8c33ec342"
       name: "Default Admin"
     on-call-support:
       - "123-456-7890"

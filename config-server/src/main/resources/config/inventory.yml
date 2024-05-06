@@ -20,7 +20,7 @@ inventory:
   contact:
     message: "Hello from inventory-service"
     contact-details:
-      email: "default-admin@mini-library.com"
+      email: "{cipher}1630f61fe9b6e8ff75f8bcf408a21e3c356155365c04436137bdccf5c0c84725ce4f082cf6acad891127a59b14510949"
       name: "Default Admin"
     on-call-support:
       - "123-456-7890"

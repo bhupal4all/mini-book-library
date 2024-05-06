@@ -10,3 +10,5 @@ spring:
           search-locations: classpath:/config
 server:
   port: 8888
+encrypt:
+  key: abcdefghijklmnopqrstuvwxyz123456

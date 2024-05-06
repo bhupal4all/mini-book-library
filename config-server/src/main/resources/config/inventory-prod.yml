@@ -1,5 +1,5 @@
 inventory:
   contact:
     contact-details:
-      email: "prod-admin@mini-library.com"
+      email: "{cipher}08aa370e48d55b4b673aa127b2c27d8062d68bae0ab8748fb3bbb1819427b7304b174e7745bdfb769ea87fce3413b6ed"
       name: "Prod Admin"
