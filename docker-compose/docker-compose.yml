@@ -15,10 +15,10 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-    deploy:
-      resources:
-        limits:
-          memory: 700M
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
   books:
     image: books
     build:
@@ -27,22 +27,10 @@ services:
     container_name: books_ms
     ports:
       - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
-      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
-    healthcheck:
-      test: 'wget -q -O - http://localhost:8080/actuator/health/readiness | grep UP || exit 1'
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
-    depends_on:
-      config-server:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700M
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   inventory:
     image: inventory
     build:
@@ -51,19 +39,10 @@ services:
     container_name: inventory_ms
     ports:
       - "8090:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
-      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
-    healthcheck:
-      test: 'wget -q -O - http://localhost:8080/actuator/health/readiness | grep UP || exit 1'
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
-    depends_on:
-      config-server:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700M
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+networks:
+  mini-book-library-network:
+    driver: bridge

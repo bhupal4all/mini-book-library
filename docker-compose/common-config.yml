@@ -1,0 +1,28 @@
+services:
+  network-deploy-service:
+    networks:
+      - mini-book-library-network
+
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+    healthcheck:
+      test: 'wget -q -O - http://localhost:8080/actuator/health/readiness | grep UP || exit 1'
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      config-server:
+        condition: service_healthy
