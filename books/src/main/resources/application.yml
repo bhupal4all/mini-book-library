@@ -21,6 +21,15 @@ management:
       enabled: true
     java:
       enabled: true
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
 info:
   app:
     name: ${spring.application.name}

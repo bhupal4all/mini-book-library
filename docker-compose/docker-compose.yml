@@ -9,6 +9,12 @@ services:
       - "8888:8888"
     volumes:
       - ../app-configs:/app-configs
+    healthcheck:
+      test: 'wget -q -O - http://localhost:8888/actuator/health/readiness | grep UP || exit 1'
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     deploy:
       resources:
         limits:
@@ -21,6 +27,18 @@ services:
     container_name: books_ms
     ports:
       - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+    healthcheck:
+      test: 'wget -q -O - http://localhost:8080/actuator/health/readiness | grep UP || exit 1'
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      config-server:
+        condition: service_healthy
     deploy:
       resources:
         limits:
@@ -33,6 +51,18 @@ services:
     container_name: inventory_ms
     ports:
       - "8090:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+    healthcheck:
+      test: 'wget -q -O - http://localhost:8080/actuator/health/readiness | grep UP || exit 1'
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      config-server:
+        condition: service_healthy
     deploy:
       resources:
         limits:
