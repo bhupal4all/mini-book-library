@@ -13,7 +13,6 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
                   autoIncrement: true
-                  incrementBy: 1
                   startWith: 10
               - column:
                   name: book_id
@@ -56,7 +55,6 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
                   autoIncrement: true
-                  incrementBy: 1
                   startWith: 10
               - column:
                   name: book_id

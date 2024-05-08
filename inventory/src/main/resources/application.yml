@@ -8,31 +8,3 @@ spring:
     active: 'dev'
 server:
   port: 8080
-springdoc:
-  show-actuator: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-    enabled-by-default: true
-  info:
-    env:
-      enabled: true
-    java:
-      enabled: true
-  health:
-    readinessstate:
-      enabled: true
-    livenessstate:
-      enabled: true
-  endpoint:
-    health:
-      probes:
-        enabled: true
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: '@project.version@'
-    app-version: ${spring.application.version}
