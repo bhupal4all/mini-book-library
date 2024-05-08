@@ -1,7 +1,10 @@
 package com.ranga.minilibrary.inventory.controller;
 
+import com.ranga.minilibrary.inventory.dto.BooksDto;
+import com.ranga.minilibrary.inventory.dto.IssuedBooksDto;
 import com.ranga.minilibrary.inventory.dto.ResponseDto;
 import com.ranga.minilibrary.inventory.entity.IssuedBooksEntity;
+import com.ranga.minilibrary.inventory.feign.BooksService;
 import com.ranga.minilibrary.inventory.mapper.IssuedBooksMapper;
 import com.ranga.minilibrary.inventory.service.BooksIssuedService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,6 +31,9 @@ public class BookIssueReturnController {
     @Autowired
     BooksIssuedService booksIssuedService;
 
+    @Autowired
+    BooksService booksService;
+
     @PostMapping("/issue/{bookId}/{userName}")
     @Operation(
             summary = "Issue Book",
@@ -47,8 +53,13 @@ public class BookIssueReturnController {
             @PathVariable("userName") String userName
     ) {
         IssuedBooksEntity entity = booksIssuedService.issueBook(bookId, userName);
+        final IssuedBooksDto responseData = IssuedBooksMapper.toDto(entity);
+        final ResponseEntity<ResponseDto<BooksDto>> booksResponse = booksService.getBookById(bookId);
+        if (booksResponse.getStatusCode().is2xxSuccessful()) {
+            responseData.setBook(booksResponse.getBody().getData());
+        }
         ResponseDto responseDto = ResponseDto.builder()
-                .data(IssuedBooksMapper.toDto(entity))
+                .data(responseData)
                 .message("Book Issued Successfully")
                 .status(HttpStatus.OK)
                 .build();
@@ -81,8 +92,13 @@ public class BookIssueReturnController {
             @PathVariable("userName") String userName
     ) {
         IssuedBooksEntity entity = booksIssuedService.returnBook(bookId, userName);
+        final IssuedBooksDto responseData = IssuedBooksMapper.toDto(entity);
+        final ResponseEntity<ResponseDto<BooksDto>> booksResponse = booksService.getBookById(bookId);
+        if (booksResponse.getStatusCode().is2xxSuccessful()) {
+            responseData.setBook(booksResponse.getBody().getData());
+        }
         ResponseDto responseDto = ResponseDto.builder()
-                .data(IssuedBooksMapper.toDto(entity))
+                .data(responseData)
                 .message("Book Returned Successfully")
                 .status(HttpStatus.OK)
                 .build();
