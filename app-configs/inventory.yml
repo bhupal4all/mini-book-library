@@ -28,3 +28,21 @@ inventory:
       - "135-792-4680"
 
 
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "Inventory Service - Spring Boot Microservice"
+    version: ${spring.application.version}
+    app-version: ${spring.application.version}

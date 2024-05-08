@@ -1,13 +1,11 @@
 spring:
   application:
-    name: books
+    name: eureka-server
     version: 1.0.0
   config:
     import: optional:configserver:http://localhost:8888
-  profiles:
-    active: 'dev'
 server:
-  port: 8080
+  port: 8761
 springdoc:
   show-actuator: true
 management:
@@ -16,8 +14,6 @@ management:
       exposure:
         include: '*'
     enabled-by-default: true
-    shutdown:
-      enabled: true
   info:
     env:
       enabled: true
@@ -32,12 +28,9 @@ management:
     health:
       probes:
         enabled: true
-    shutdown:
-      enabled: true
 info:
   app:
     name: ${spring.application.name}
     description: "@project.description@"
     version: '@project.version@'
     app-version: ${spring.application.version}
-
