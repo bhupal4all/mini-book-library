@@ -19,12 +19,28 @@ services:
       file: common-config.yml
       service: microservice-base-config
 
+  eureka-server:
+    image: eureka-server
+    build:
+      context: ../eureka-server
+      dockerfile: ../eureka-server/Dockerfile
+    container_name: eureka_server
+    environment:
+      - SPRING_APPLICATION_NAME=eureka-server
+    ports:
+      - "8761:8761"
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
   books:
     image: books
     build:
       context: ../books
       dockerfile: ../books/Dockerfile
     container_name: books_ms
+    environment:
+      - SPRING_APPLICATION_NAME=books
     ports:
       - "8080:8080"
     extends:
@@ -36,6 +52,8 @@ services:
     build:
       context: ../inventory
       dockerfile: ../inventory/Dockerfile
+    environment:
+      - SPRING_APPLICATION_NAME=inventory
     container_name: inventory_ms
     ports:
       - "8090:8080"
