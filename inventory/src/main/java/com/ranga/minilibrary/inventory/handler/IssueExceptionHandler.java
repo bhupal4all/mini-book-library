@@ -1,9 +1,7 @@
 package com.ranga.minilibrary.inventory.handler;
 
 import com.ranga.minilibrary.inventory.dto.ErrorResponseDto;
-import com.ranga.minilibrary.inventory.exceptions.BookIsNotIssuedException;
-import com.ranga.minilibrary.inventory.exceptions.BookNotFoundException;
-import com.ranga.minilibrary.inventory.exceptions.BookReturnedException;
+import com.ranga.minilibrary.inventory.exceptions.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -18,7 +16,11 @@ import org.springframework.web.context.request.WebRequest;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class IssueExceptionHandler {
 
-    @ExceptionHandler({BookIsNotIssuedException.class, BookReturnedException.class, BookNotFoundException.class})
+    @ExceptionHandler({
+            BookIsNotIssuedException.class,
+            BookReturnedException.class,
+            BookNotFoundException.class
+    })
     public ResponseEntity<ErrorResponseDto> book(RuntimeException ex,
                                                  WebRequest request) {
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
@@ -31,6 +33,20 @@ public class IssueExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDto);
     }
 
-
+    @ExceptionHandler({
+            InventoryNotFoundException.class,
+            InsufficientInventoryException.class
+    })
+    public ResponseEntity<ErrorResponseDto> inventory(RuntimeException ex,
+                                                      WebRequest request) {
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+                request.getDescription(false),
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND,
+                java.time.LocalDateTime.now()
+        );
+        log.error("Issue exception: {}", errorResponseDto);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponseDto);
+    }
 
 }

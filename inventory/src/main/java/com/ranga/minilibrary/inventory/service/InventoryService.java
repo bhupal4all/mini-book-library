@@ -1,6 +1,7 @@
 package com.ranga.minilibrary.inventory.service;
 
 import com.ranga.minilibrary.inventory.entity.InventoryEntity;
+import com.ranga.minilibrary.inventory.exceptions.InventoryNotFoundException;
 import com.ranga.minilibrary.inventory.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,9 @@ public class InventoryService {
 
     public void deleteInventory(final Integer id) {
         this.inventoryRepository.deleteById(id);
+    }
+
+    public InventoryEntity getInventoryForBookId(final Integer bookId) {
+        return this.inventoryRepository.findByBookId(bookId).orElseThrow(() -> new InventoryNotFoundException());
     }
 }

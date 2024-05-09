@@ -5,12 +5,17 @@ import com.ranga.minilibrary.inventory.entity.InventoryEntity;
 
 public class InventoryMapper {
     public static InventoryDto toDto(InventoryEntity entity) {
-        return InventoryDto.builder()
+        final InventoryDto inventoryDto = InventoryDto.builder()
                 .id(entity.getId())
                 .bookId(entity.getBookId())
                 .onHandQuantity(entity.getOnHandQuantity())
                 .allocatedQuantity(entity.getAllocatedQuantity())
                 .build();
+        inventoryDto.setCreatedBy(entity.getCreatedBy());
+        inventoryDto.setCreatedAt(entity.getCreatedAt());
+        inventoryDto.setUpdatedBy(entity.getUpdatedBy());
+        inventoryDto.setUpdatedAt(entity.getUpdatedAt());
+        return inventoryDto;
     }
 
     public static InventoryEntity toEntity(InventoryDto dto) {

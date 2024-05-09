@@ -147,4 +147,41 @@ public class InventoryController {
                 .timestamp(LocalDateTime.now()).build();
         return ResponseEntity.ok(responseDto);
     }
+
+    @GetMapping("/book/{bookId}")
+    @Operation(
+            summary = "Get Inventory By Book Id",
+            description = "Get the inventory by book Id"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Inventory fetched successfully"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request"
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Inventory not found"
+            )
+    })
+    public ResponseEntity<ResponseDto> getInventoryForBookId(@PathVariable("bookId") Integer bookId) {
+        if (bookId == 0) {
+            final ResponseDto responseDto = ResponseDto.builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .message("Invalid book Id")
+                    .timestamp(LocalDateTime.now()).build();
+            return ResponseEntity.badRequest().body(responseDto);
+        }
+
+        final InventoryEntity inventoryEntity = inventoryService.getInventoryForBookId(bookId);
+        final ResponseDto responseDto = ResponseDto.builder()
+                .data(InventoryMapper.toDto(inventoryEntity))
+                .status(HttpStatus.OK)
+                .message("Inventory fetched successfully")
+                .timestamp(LocalDateTime.now()).build();
+        return ResponseEntity.ok(responseDto);
+    }
 }

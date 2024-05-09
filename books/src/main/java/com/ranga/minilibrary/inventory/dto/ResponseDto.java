@@ -17,9 +17,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseDto {
+public class ResponseDto<T extends Object> {
     @Schema(description = "Response data")
-    private Object data;
+    private T data;
     @Schema(description = "Response message")
     private String message;
     @Schema(description = "Response status")

@@ -5,7 +5,11 @@ import com.ranga.minilibrary.inventory.entity.BooksEntity;
 
 public class BooksMapper {
     public static BooksDto toDto(BooksEntity entity) {
-        final BooksDto booksDto = new BooksDto(entity.getId(), entity.getTitle(), entity.getAuthor(), entity.getPublishedYear());
+        final BooksDto booksDto = new BooksDto(entity.getId(),
+                entity.getTitle(),
+                entity.getAuthor(),
+                entity.getPublishedYear(),
+                null);
         booksDto.setCreatedBy(entity.getCreatedBy());
         booksDto.setCreatedAt(entity.getCreatedAt());
         booksDto.setUpdatedBy(entity.getUpdatedBy());

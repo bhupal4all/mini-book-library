@@ -2,8 +2,10 @@ package com.ranga.minilibrary.inventory.controller;
 
 import com.ranga.minilibrary.inventory.dto.BooksDto;
 import com.ranga.minilibrary.inventory.dto.ErrorResponseDto;
+import com.ranga.minilibrary.inventory.dto.InventoryDto;
 import com.ranga.minilibrary.inventory.dto.ResponseDto;
 import com.ranga.minilibrary.inventory.entity.BooksEntity;
+import com.ranga.minilibrary.inventory.feign.InventoryService;
 import com.ranga.minilibrary.inventory.mapper.BooksMapper;
 import com.ranga.minilibrary.inventory.service.BooksService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,6 +39,9 @@ public class BooksController {
     @Autowired
     private BooksService booksService;
 
+    @Autowired
+    private InventoryService inventoryService;
+
     @Operation(
             summary = "Get Books",
             description = "Get all the books"
@@ -66,6 +71,12 @@ public class BooksController {
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDto> getBookById(@PathVariable(name = "id") Integer id) {
         final BooksDto dto = BooksMapper.toDto(booksService.getBookById(id));
+
+        final ResponseEntity<ResponseDto<InventoryDto>> inventoryForBookId = this.inventoryService.getInventoryForBookId(id);
+        if (inventoryForBookId.getStatusCode().is2xxSuccessful()) {
+            dto.setInventory(inventoryForBookId.getBody().getData());
+        }
+
         ResponseDto responseDto = ResponseDto.builder()
                 .data(dto)
                 .message("Book retrieved successfully")

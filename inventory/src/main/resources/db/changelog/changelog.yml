@@ -106,10 +106,10 @@ databaseChangeLog:
                   value: 1
               - column:
                   name: on_hand_quantity
-                  value: 10
+                  value: 9
               - column:
                   name: allocated_quantity
-                  value: 0
+                  value: 1
               - column:
                   name: created_by
                   value: "Ranga"
