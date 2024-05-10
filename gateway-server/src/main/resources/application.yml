@@ -8,8 +8,22 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
           lower-case-service-id: true
+      routes:
+        - id: books
+          uri: lb://BOOKS
+          predicates:
+            - Path=/library/books/**
+          filters:
+            - RewritePath=/library/books/(?<path>.*), /$\{path}
+        - id: inventory
+          uri: lb://INVENTORY
+          predicates:
+            - Path=/library/inventory/**
+          filters:
+            - RewritePath=/library/inventory/(?<path>.*), /$\{path}
+
 server:
   port: 8000
 springdoc:
