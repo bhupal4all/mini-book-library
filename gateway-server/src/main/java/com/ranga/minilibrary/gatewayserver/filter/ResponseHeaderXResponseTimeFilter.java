@@ -1,5 +1,6 @@
-package com.ranga.minilibrary.gatewayserver;
+package com.ranga.minilibrary.gatewayserver.filter;
 
+import com.ranga.minilibrary.gatewayserver.Constants;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.stereotype.Component;
@@ -8,13 +9,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class ResponseHeaderXResponseTimeFilter implements GlobalFilter {
-    final String X_RESPONSE_TIME = "X-Response-Time";
-
     @Override
     public Mono<Void> filter(final ServerWebExchange exchange, final GatewayFilterChain chain) {
         final long startTime = System.currentTimeMillis();
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-            exchange.getResponse().getHeaders().add(X_RESPONSE_TIME, System.currentTimeMillis() - startTime + "ms");
+            exchange.getResponse().getHeaders().add(Constants.X_RESPONSE_TIME, System.currentTimeMillis() - startTime + "ms");
         }));
     }
 }
