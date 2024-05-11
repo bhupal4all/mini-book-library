@@ -17,12 +17,15 @@ spring:
             - Path=/library/books/**
           filters:
             - RewritePath=/library/books/(?<path>.*), /$\{path}
+            - AddResponseHeader=X-Application, Mini Book Library
+
         - id: inventory
           uri: lb://INVENTORY
           predicates:
             - Path=/library/inventory/**
           filters:
             - RewritePath=/library/inventory/(?<path>.*), /$\{path}
+            - AddResponseHeader=X-Application, Mini Book Library
 
 server:
   port: 8000
