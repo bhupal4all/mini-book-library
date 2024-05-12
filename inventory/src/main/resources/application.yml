@@ -36,3 +36,10 @@ info:
     description: "@project.description@"
     version: '@project.version@'
     app-version: ${spring.application.version}
+
+logging:
+  level:
+    com:
+      ranga:
+        minilibrary:
+          inventory: INFO

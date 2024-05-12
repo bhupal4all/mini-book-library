@@ -18,6 +18,10 @@ spring:
           filters:
             - RewritePath=/library/books/(?<path>.*), /$\{path}
             - AddResponseHeader=X-Application, Mini Book Library
+            - name: CircuitBreaker
+              args:
+                name: books
+                fallbackUri: forward:/fallback/books
 
         - id: inventory
           uri: lb://INVENTORY
@@ -26,7 +30,10 @@ spring:
           filters:
             - RewritePath=/library/inventory/(?<path>.*), /$\{path}
             - AddResponseHeader=X-Application, Mini Book Library
-
+            - name: CircuitBreaker
+              args:
+                name: inventory
+                fallbackUri: forward:/fallback/inventory
 server:
   port: 8000
 springdoc:

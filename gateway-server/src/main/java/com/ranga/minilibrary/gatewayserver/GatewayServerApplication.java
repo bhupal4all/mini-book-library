@@ -1,5 +1,6 @@
 package com.ranga.minilibrary.gatewayserver;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.filter.GlobalFilter;

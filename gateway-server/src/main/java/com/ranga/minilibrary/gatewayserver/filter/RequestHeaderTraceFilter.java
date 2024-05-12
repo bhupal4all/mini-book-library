@@ -22,10 +22,10 @@ public class RequestHeaderTraceFilter implements GlobalFilter {
     public Mono<Void> filter(final ServerWebExchange exchange, final GatewayFilterChain chain) {
 
         if (exchange.getRequest().getHeaders().containsKey(Constants.CO_RELATION_ID)) {
-            log.info("Reading Co-Relation-ID: {}", exchange.getRequest().getHeaders().get(Constants.CO_RELATION_ID));
+            log.info(" URI: {} Reading Co-Relation-ID: {}", exchange.getRequest().getURI(), exchange.getRequest().getHeaders().get(Constants.CO_RELATION_ID));
         } else {
             final String traceId = UUID.randomUUID().toString();
-            log.info("Adding Co-Relation-ID: {}", traceId);
+            log.info(" URI: {} Adding Co-Relation-ID: {}", exchange.getRequest().getURI(), traceId);
             FilterUtil.setRequestHeader(exchange, Constants.CO_RELATION_ID, traceId);
         }
 
