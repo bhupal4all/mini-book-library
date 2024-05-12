@@ -19,11 +19,11 @@ public class ResponseHeaderTraceFilter {
             final HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
             final HttpHeaders responseHeaders = exchange.getResponse().getHeaders();
             if (responseHeaders.containsKey(Constants.CO_RELATION_ID)) {
-                log.debug("Reading Co-Relation-ID: {}", responseHeaders.get(Constants.CO_RELATION_ID));
+                log.debug(" URI: {} Reading Co-Relation-ID: {}", exchange.getRequest().getURI(), responseHeaders.get(Constants.CO_RELATION_ID));
             } else {
                 if (requestHeaders.containsKey(Constants.CO_RELATION_ID)) {
                     final String coRelationId = requestHeaders.getFirst(Constants.CO_RELATION_ID);
-                    log.debug("Adding Co-Relation-ID: {}", coRelationId);
+                    log.debug(" URI: {} Adding Co-Relation-ID: {}", exchange.getRequest().getURI(), coRelationId);
                     responseHeaders.add(Constants.CO_RELATION_ID, coRelationId);
                 }
             }
