@@ -1,5 +1,6 @@
 package com.ranga.minilibrary.gatewayserver.controller;
 
+import com.ranga.minilibrary.gatewayserver.Constants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,9 @@ public class FallbackController {
                 "status", "503",
                 "error", "Service Unavailable"
         );
-        return ResponseEntity.status(503).body(message);
+        return ResponseEntity.status(503)
+                .header(Constants.X_APPLICATION, "Gateway Server")
+                .body(message);
     }
 
     @GetMapping({"/inventory"})
@@ -28,7 +31,9 @@ public class FallbackController {
                 "status", "503",
                 "error", "Service Unavailable"
         );
-        return ResponseEntity.status(503).body(message);
+        return ResponseEntity.status(503)
+                .header(Constants.X_APPLICATION, "Gateway Server")
+                .body(message);
     }
 
 }

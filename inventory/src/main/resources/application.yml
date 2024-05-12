@@ -6,6 +6,10 @@ spring:
     import: optional:configserver:http://localhost:8888
   profiles:
     active: 'dev'
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 server:
   port: 8080
 springdoc:

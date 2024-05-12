@@ -16,6 +16,7 @@ public class CoRelationIdInterceptor implements HandlerInterceptor {
     public boolean preHandle(final HttpServletRequest request,
                              final HttpServletResponse response,
                              final Object handler) throws Exception {
+        log.info("---------------------------------------------------------------");
         log.info("[ENTRY] URI: {} , Correlation ID: {}", request.getRequestURI(), request.getHeader(CO_RELATION_ID));
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
@@ -35,6 +36,7 @@ public class CoRelationIdInterceptor implements HandlerInterceptor {
                                 final Object handler,
                                 final Exception ex) throws Exception {
         log.info("[AFTER COMPLETION] URI: {} , Correlation ID: {}", request.getRequestURI(), request.getHeader(CO_RELATION_ID));
+        log.info("---------------------------------------------------------------");
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }
