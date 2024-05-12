@@ -33,6 +33,20 @@ services:
       file: common-config.yml
       service: microservice-eureka-config
 
+  gateway-server:
+    image: gateway-server
+    build:
+      context: ../gateway-server
+      dockerfile: ../gateway-server/Dockerfile
+    container_name: gateway_server
+    environment:
+      - SPRING_APPLICATION_NAME=gateway-server
+    ports:
+      - "8000:8000"
+    extends:
+      file: common-config.yml
+      service: microservice-gateway-config
+
   books:
     image: books
     build:
